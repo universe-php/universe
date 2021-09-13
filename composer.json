@@ -1,5 +1,5 @@
 {
-    "name": "universe-php/universe",
+    "name": "universe/universe",
     "type": "library",
     "description": "Universe PHP framework",
     "keywords": ["framework"],
