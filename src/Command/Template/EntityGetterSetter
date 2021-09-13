@@ -1,0 +1,10 @@
+    public function get%GETTER%(): ?%COLUMN_TYPE%
+    {
+        return $this->%VAR_NAME%;
+    }
+
+    public function set%SETTER%(%COLUMN_TYPE% $%VAR_NAME%): self
+    {
+        $this->%VAR_NAME% = $%VAR_NAME%;
+        return $this;
+    }

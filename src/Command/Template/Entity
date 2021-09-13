@@ -1,0 +1,27 @@
+<?php
+namespace App\Entity;
+use Universe\Starship\Entity;
+
+/**
+ *
+ * @ORM\Table(name="%TABLE_NAME%")
+ * @ORM\Entity(repositoryClass="App\Repository\%REPOSITORY_NAME%")
+ */
+class %ENTITY_NAME%
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    %PROPS%
+}
