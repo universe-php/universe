@@ -1,0 +1,4 @@
+    /**
+     * @ORM\Column(name="%COLUMN_NAME%", type="%COLUMN_TYPE%", length=%COLUMN_LENGTH%)
+     */
+    private %COLUMN_NAME_VAR%;

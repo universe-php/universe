@@ -1,0 +1,23 @@
+<?php
+namespace App\Controller;
+
+use Universe\Starship\Controller;
+
+/**
+ * @Route("/%ROUTE_PREFIX%")
+ */
+class %CONTROLLER_NAME%Controller extends Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * @Route("", methods={"GET"}, name="%VIEW_NAME%_index")
+     */
+    public function index(){
+        $this->render('pages/%VIEW_NAME%.html.twig',
+            ['controller_name'=>'%CONTROLLER_NAME%Controller']);
+    }
+}
