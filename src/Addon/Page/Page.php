@@ -28,10 +28,10 @@ class Page extends Controller
     private function blocks(int $pageId){
         $pageBlocks = $this->pageBlockRepo->findBy(['page_id' => $pageId]);
         $blocks = [];
+        echo '<pre>';
         foreach($pageBlocks as $block){
             $content = $block->getContent();
-            $pageTwig = $this->pageBlockTwigRepo->find($block->getId());
-            var_dump($pageTwig);
+            $pageTwig = $this->pageBlockTwigRepo->find($block->getBlockId());
             $blocks[] = [
                 'blockTemplate'=>$content->blockTemplate,
                 'blockItems'=>$content->itemTemplate,
