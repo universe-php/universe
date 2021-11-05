@@ -69,6 +69,7 @@ final class TwigExtended {
         $path = Universe::$roots->theme . $this->theme . DIRECTORY_SEPARATOR;
         $loader = new FilesystemLoader($path);
         $this->twig = new Environment($loader, ['cache' => $this->cache]);
+        $this->twig->addGlobal('session', $_SESSION);
         $this->setFilters();
         $this->setFunctions();
         echo $this->twig->render($this->template, $this->variables);
