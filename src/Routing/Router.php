@@ -132,7 +132,7 @@ final class Router
             } else {
                 $controller = str_replace('.php','',$controller);
                 $files[] = $dir
-                    ?['ns'=>$dir,'class'=>$controller]
+                    ?['ns'=>str_replace('/','\\',$dir),'class'=>$controller]
                     :['ns'=>null,'class'=>$controller];
             }
         }
@@ -255,17 +255,18 @@ final class Router
         } else {
             $destination = ['class'=>'404'];
             $routeKeys = array_keys(self::$routesWithArgument);
+
             foreach($routeKeys as $key){
                 if (preg_match($key, $url, $matches)){
-                    array_shift($matches);
-
-                    $_i = 0;
-                    foreach(self::$routes[self::$routesWithArgument[$key]]['arguments'] as $_arg){
-                        self::$routes[self::$routesWithArgument[$key]]['argumentValues'][$_arg] = $matches[$_i]??null;
-                        $_i++;
+                    $matchedUrl = array_shift($matches);
+                    if ($url===$matchedUrl){
+                        $_i = 0;
+                        foreach(self::$routes[self::$routesWithArgument[$key]]['arguments'] as $_arg){
+                            self::$routes[self::$routesWithArgument[$key]]['argumentValues'][$_arg] = $matches[$_i]??null;
+                            $_i++;
+                        }
+                        $destination = self::$routes[self::$routesWithArgument[$key]];
                     }
-                    //self::$routes[self::$routesWithArgument[$key]]['argumentValues'] = $matches;
-                    $destination = self::$routes[self::$routesWithArgument[$key]];
                 }
             }
         }
